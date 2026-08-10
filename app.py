@@ -8,7 +8,7 @@ st.set_page_config(page_title="When the World Held Its Breath", page_icon="⚽",
 
 # Colors
 NAVY = "#1B2A4A"
-GOLD = "#D4AF37"
+GOLD = "#3AAFDD"
 
 # Minimal CSS - don't fight Streamlit
 st.markdown("""
@@ -85,7 +85,7 @@ with tab1:
     wc = data['gtrends_wc'].copy()
     wc.columns = ['Interest']
     fig = px.area(wc.reset_index(), x='date', y='Interest', color_discrete_sequence=[GOLD])
-    fig.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(212,175,55,0.1)", line_width=0,
+    fig.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(58,175,221,0.12)", line_width=0,
                   annotation_text="World Cup 2026", annotation_position="top")
     fig.update_layout(height=350, xaxis_title="", yaxis_title="Search Interest (0-100)")
     st.plotly_chart(fig, use_container_width=True)
@@ -109,7 +109,7 @@ with tab1:
             td = data['gtrends_watch'].copy()
             td.columns = ['Interest']
             fig_wp = px.area(td.reset_index(), x=td.reset_index().columns[0], y='Interest', color_discrete_sequence=[GOLD])
-            fig_wp.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(212,175,55,0.1)", line_width=0)
+            fig_wp.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(58,175,221,0.12)", line_width=0)
             fig_wp.update_layout(height=200, xaxis_title="", yaxis_title="Search Interest", margin=dict(l=0,r=0,t=10,b=0))
             st.plotly_chart(fig_wp, use_container_width=True, key="chart_watchparty")
             st.caption("Source: Google Trends — 'Watch party', Worldwide, Jan 2025–Aug 2026")
@@ -119,7 +119,7 @@ with tab1:
             td = data['gtrends_soccer'].copy()
             td.columns = ['Interest']
             fig_sc = px.area(td.reset_index(), x=td.reset_index().columns[0], y='Interest', color_discrete_sequence=[GOLD])
-            fig_sc.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(212,175,55,0.1)", line_width=0)
+            fig_sc.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(58,175,221,0.12)", line_width=0)
             fig_sc.update_layout(height=200, xaxis_title="", yaxis_title="Search Interest", margin=dict(l=0,r=0,t=10,b=0))
             st.plotly_chart(fig_sc, use_container_width=True, key="chart_soccer")
             st.caption("Source: Google Trends — 'Soccer', USA, Jan 2025–Aug 2026")
@@ -129,7 +129,7 @@ with tab1:
             td = data['gtrends_travel'].copy()
             td.columns = ['Interest']
             fig_tr = px.area(td.reset_index(), x=td.reset_index().columns[0], y='Interest', color_discrete_sequence=[GOLD])
-            fig_tr.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(212,175,55,0.1)", line_width=0)
+            fig_tr.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(58,175,221,0.12)", line_width=0)
             fig_tr.update_layout(height=200, xaxis_title="", yaxis_title="Search Interest", margin=dict(l=0,r=0,t=10,b=0))
             st.plotly_chart(fig_tr, use_container_width=True, key="chart_travel")
             st.caption("Source: Google Trends — 'Travel to USA', Worldwide, Jan 2025–Aug 2026")
@@ -142,7 +142,7 @@ with tab1:
             td = data['gtrends_hotels_kansas'].copy()
             td.columns = ['Interest']
             fig_kc = px.area(td.reset_index(), x=td.reset_index().columns[0], y='Interest', color_discrete_sequence=[GOLD])
-            fig_kc.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(212,175,55,0.1)", line_width=0)
+            fig_kc.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(58,175,221,0.12)", line_width=0)
             fig_kc.update_layout(height=200, xaxis_title="", yaxis_title="Search Interest", margin=dict(l=0,r=0,t=10,b=0))
             st.plotly_chart(fig_kc, use_container_width=True, key="chart_kc")
             st.caption("Source: KC2026 organizer report; Google Trends — 'Hotels Kansas City'")
@@ -155,7 +155,7 @@ with tab1:
             td2.columns = ['New York']
             combined = td.join(td2)
             fig_ht = px.line(combined.reset_index(), x=combined.reset_index().columns[0], y=['Miami','New York'], color_discrete_sequence=[GOLD, '#4A90D9'])
-            fig_ht.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(212,175,55,0.1)", line_width=0)
+            fig_ht.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(58,175,221,0.12)", line_width=0)
             fig_ht.update_layout(height=200, xaxis_title="", yaxis_title="Search Interest", margin=dict(l=0,r=0,t=10,b=0), legend=dict(orientation='h',y=-0.2))
             st.plotly_chart(fig_ht, use_container_width=True, key="chart_hotels")
             st.caption("Source: Google Trends — 'Hotels Miami' & 'Hotels New York', Worldwide")
@@ -165,7 +165,7 @@ with tab1:
             td = data['gtrends_visa'].copy()
             td.columns = ['Interest']
             fig_vi = px.area(td.reset_index(), x=td.reset_index().columns[0], y='Interest', color_discrete_sequence=[GOLD])
-            fig_vi.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(212,175,55,0.1)", line_width=0)
+            fig_vi.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(58,175,221,0.12)", line_width=0)
             fig_vi.update_layout(height=200, xaxis_title="", yaxis_title="Search Interest", margin=dict(l=0,r=0,t=10,b=0))
             st.plotly_chart(fig_vi, use_container_width=True, key="chart_visa")
             st.caption("Source: Google Trends — 'US Visa', Worldwide, Jan 2025–Aug 2026")
@@ -197,7 +197,7 @@ with tab1:
     - Phone call volume drops **85%** during play, spikes **200%** at halftime
     """)
     
-    st.warning("⚠️ **The dark side:** Domestic violence reports spike 26% in losing countries after elimination (UK study, replicated globally). The same connection that creates joy creates pain.")
+    st.markdown('<div style="padding:15px 20px;border-radius:8px;background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.3);"><p style="margin:0;font-size:0.9rem;color:#dc3545;">⚠️ <strong>The dark side:</strong> Domestic violence reports spike 26% in losing countries after elimination (UK study, replicated globally). The same connection that creates joy creates pain.</p></div>', unsafe_allow_html=True)
     
     st.divider()
     
@@ -418,7 +418,7 @@ with tab2:
         top10_display = top10.copy()
         top10_display['Color'] = top10_display['Participated'].apply(lambda x: 'On the Pitch' if x else 'Outside the 48')
         fig_810 = px.bar(top10_display, y='Country', x='Interest', orientation='h', 
-                        color='Color', color_discrete_map={'Outside the 48': GOLD, 'On the Pitch': '#666666'},
+                        color='Color', color_discrete_map={'Outside the 48': GOLD, 'On the Pitch': '#1B2A4A'},
                         text='Interest')
         fig_810.update_layout(height=350, margin=dict(l=0,r=0,t=10,b=0), yaxis=dict(autorange='reversed'), 
                              xaxis_title='Relative Search Interest', yaxis_title='',
@@ -446,7 +446,7 @@ with tab2:
     td.columns = ['Interest']
     
     fig = px.area(td.reset_index(), x=td.reset_index().columns[0], y='Interest', color_discrete_sequence=[GOLD])
-    fig.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(27,42,74,0.07)", line_width=0,
+    fig.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(58,175,221,0.12)", line_width=0,
                   annotation_text="⚽ World Cup", annotation_position="top left")
     fig.update_layout(height=400, xaxis_title="", yaxis_title="Search Interest (0-100)")
     st.plotly_chart(fig, use_container_width=True)
@@ -484,58 +484,49 @@ with tab2:
 # ====================
 with tab4:
     st.header("🤖 How AI Built This Story")
-    st.write("This project used GenAI as a co-pilot at every stage — not just for code, but for data discovery, hypothesis generation, and narrative crafting.")
+    st.write("This project used **Kiro (Amazon AI agent)** as a co-pilot throughout — for data discovery, hypothesis generation, code generation, and narrative development.")
     
-    st.subheader("AI Agent Pipeline")
-    st.code("""
-    Public Datasets (FIFA, Google Trends, Kaggle)
-            │
-            ▼
-    Agent 1: Data Discovery & Validation
-            │
-            ▼
-    Agent 2: Hypothesis Generator (50+ questions)
-            │
-            ▼
-    Agent 3: Statistical Testing (Python)
-            │
-            ▼
-    Agent 4: Insight Ranker (novelty × visual potential)
-            │
-            ▼
-    Agent 5: Narrative Writer (story arc)
-            │
-            ▼
-    Final Dashboard (Streamlit + Plotly)
+    st.subheader("What AI Actually Did")
+    st.write("""
+    - **Data Discovery:** AI suggested exploring Google Trends by country, leading to the "8 of 10" discovery
+    - **Hypothesis Generation:** Generated dozens of questions about the data — most were rejected after verification failed
+    - **Source Validation:** When initial data used wrong time windows, AI flagged it and we re-downloaded with correct parameters
+    - **Rejected Claims:** Travel patterns, fan attendance by nationality, and economic metrics were removed because we couldn't verify them
+    - **Code Generation:** Dashboard layout, Plotly charts, CSS styling, data processing
+    - **Narrative Structure:** Helped shape the story arc from global scale to individual human stories
     """)
+    
+    st.subheader("Key Principle")
+    st.info("**AI surfaced patterns. Humans verified facts.** Every number in this dashboard traces to a cited source. Claims that couldn't be verified were removed, not kept.")
     
     st.divider()
     c1, c2, c3 = st.columns(3)
     with c1:
         st.subheader("📊 Data")
         st.write("- Python / Pandas")
-        st.write("- pytrends (Google Trends API)")
+        st.write("- Google Trends (manual download)")
         st.write("- Kaggle datasets")
-        st.write("- FIFA.com official stats")
+        st.write("- FIFA.com official reports")
     with c2:
         st.subheader("📉 Visualization")
         st.write("- Streamlit")
         st.write("- Plotly Express + GO")
-        st.write("- Custom theming")
+        st.write("- Custom CSS theming")
     with c3:
         st.subheader("🤖 GenAI")
-        st.write("- Claude / Kiro")
-        st.write("- Hypothesis generation")
-        st.write("- Narrative drafting")
-        st.write("- Code generation")
+        st.write("- Kiro (Amazon AI agent)")
+        st.write("- Claude (Anthropic)")
+        st.write("- ChatGPT (design mockups)")
+        st.write("- All code AI-assisted, human-verified")
     
     st.divider()
     st.subheader("📚 Data Sources")
-    st.write("- **FIFA.com** — Official 2026 World Cup Statistics (7 categories, 48 teams)")
-    st.write("- **Google Trends** — 10 search terms, Jan 2025 – Aug 2026")
+    st.write("- **FIFA.com** — Official 2026 World Cup Statistics, Fan Festival attendance (9M+, 263,972)")
+    st.write("- **Google Trends** — 11 search terms + country-level interest data, Jun–Jul 2026")
     st.write("- **Kaggle** — International Football Results (1872-2026)")
-    st.write("- **Forbes** — Cultural Impacts of the 2026 World Cup")
-    st.write("- **WTO** — $40.9B GDP projection")
+    st.write("- **KC2026** — Kansas City Fan Festival organizer report (178 countries)")
+    st.write("- **Reuters** — Vozinha/Cabo Verde goalkeeper reporting")
+    st.write("- **World Bank** — Cabo Verde population (527,326)")
     
     st.divider()
     st.caption("Built for Analyticon VizCon 2026 | Theme: 'How the world lives, thrives, and connects' 🌍")
