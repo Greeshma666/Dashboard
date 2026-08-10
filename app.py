@@ -499,12 +499,27 @@ with tab2:
     fig.update_layout(height=400, xaxis_title="", yaxis_title="Search Interest (0-100)")
     st.plotly_chart(fig, use_container_width=True)
     
+    # Source link for selected trend
+    trend_sources = {
+        "World Cup (Global)": "[Google Trends — World Cup, Worldwide](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=World%20Cup)",
+        "Travel to USA": "[Google Trends — Travel to USA, Worldwide](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=travel%20to%20USA)",
+        "Visit Spain": "[Google Trends — Visit Spain, Worldwide](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=visit%20spain)",
+        "US Visa Applications": "[Google Trends — US Visa, Worldwide](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=US%20visa)",
+        "Soccer (USA)": "[Google Trends — Soccer, USA](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&geo=US&q=soccer)",
+        "Watch Party": "[Google Trends — Watch Party, Worldwide](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=watch%20party)",
+        "Hotels New York": "[Google Trends — Hotels New York, Worldwide](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=hotels%20new%20york)",
+        "Hotels Seattle": "[Google Trends — Hotels Seattle, Worldwide](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=hotels%20seattle)",
+        "Hotels Miami": "[Google Trends — Hotels Miami, Worldwide](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=hotels%20miami)",
+        "Hotels Kansas City": "[Google Trends — Hotels Kansas City, Worldwide](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=hotels%20kansas%20city)",
+    }
+    st.markdown(f"*Source: {trend_sources[trend_choice]}*")
+    
     st.info("""💡 **Key findings:**
-    - "World Cup" searches spiked **117×** vs baseline
-    - "Visit Spain" surged **5×** after Spain's victory
-    - US visa applications hit **2.6×** peak during tournament
-    - Hotel searches in NYC spiked **4.7×**
-    - "Soccer" in USA hit all-time high — **5.7×** normal
+    - "World Cup" searches spiked **100×** vs baseline
+    - "Visit Spain" surged **10×** after Spain's victory
+    - US visa applications hit **3.5×** peak during tournament
+    - Hotel searches in NYC spiked **8×**
+    - "Soccer" in USA hit all-time high — **~6×** normal
     """)
     
 
@@ -521,7 +536,8 @@ with tab2:
     c5, c6, c7 = st.columns(3)
     c5.metric("👷 Jobs (Est.)", "~824K FTE", "FIFA/WTO study")
     c6.metric("📡 Data Transported", "13 PB", "As of quarterfinals")
-    c7.metric("🏟️ Matches", "104", "39 days")
+    c7.metric("🏟️ Matches", "104")
+    c7.markdown('<p style="color:#09ab3b; font-size:0.85rem; margin-top:-15px;">39 days</p>', unsafe_allow_html=True)
     
     st.info("**More people experienced the World Cup outside the stadiums (9.017M+) than inside them (6.8M).** The biggest crowd wasn't in a stadium — it was everywhere else.")
     
@@ -530,7 +546,8 @@ with tab2:
 - *[FIFA — World Cup 2026 by the numbers](https://www.fifa.com/en/articles/fifa-world-cup-2026-by-numbers) (6.8M stadium, 263,972 final)*
 - *[FIFA — FIFA/WTO socioeconomic impact study](https://www.fifa.com/en/articles/fifa-world-cup-2026-socioeconomic-impact) (~824K FTE jobs — estimated)*
 - *[FIFA — Digital reach and technology](https://www.fifa.com/en/articles/fifa-world-cup-2026-digital-technology) (13 PB data — as of quarterfinals, not full tournament)*
-- *KC2026 organizer report (178 countries)*
+- *[FIFA — World Cup 2026 tournament overview](https://inside.fifa.com/organisation/president/news/world-cup-2026-infantino-fiipriority-investment-summit-ronaldo) (104 matches, 39 days)*
+- *[FIFA — Fan Festival extends World Cup experience](https://football-technology.fifa.com/organisation/media-releases/fan-festival-extends-historic-world-cup-2026-experience-millions-record-breaking-celebrations-host-countries) (178 countries)*
 """)
     
     st.divider()
