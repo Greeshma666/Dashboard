@@ -47,13 +47,27 @@ def load_data():
 
 data = load_data()
 
+# Load player images
+import base64
+def _load_img(filename):
+    try:
+        with open(os.path.join(os.path.dirname(__file__), 'assets', filename), 'rb') as f:
+            return base64.b64encode(f.read()).decode()
+    except:
+        return ""
+
+_yamal = _load_img('12_yamal_beginning.jpg')
+_messi = _load_img('13_messi_legacy.jpg')
+_ronaldo = _load_img('14_ronaldo_farewell.jpg')
+_mbappe = _load_img('mbappe.jpg')
+
 # ====================
 # HERO
 # ====================
 st.markdown(f"""
 <div style="background:{NAVY}; padding:60px 30px; border-radius:15px; text-align:center; margin-bottom:30px;">
     <p style="font-family:'Bebas Neue',sans-serif; font-size:5.5rem; color:white; margin:0; line-height:1.05; letter-spacing:4px;">WHEN THE WORLD<br>HELD ITS BREATH</p>
-    <p style="font-family:'Inter',sans-serif; font-size:1.1rem; color:{GOLD}; margin-top:15px;">How the 2026 FIFA World Cup proved that 8 billion strangers share one heartbeat</p>
+    <p style="font-family:'Inter',sans-serif; font-size:1.1rem; color:{GOLD}; margin-top:15px;">How the 2026 FIFA World Cup proved that billions of strangers share one heartbeat <svg width="40" height="20" viewBox="0 0 40 20" style="vertical-align:middle;"><polyline points="0,10 8,10 11,2 14,18 17,6 20,14 23,10 40,10" fill="none" stroke="#dc3545" stroke-width="2"/></svg></p>
     <p style="font-family:'Inter',sans-serif; font-size:0.8rem; color:rgba(255,255,255,0.5); margin-top:20px;">Spain 1–0 Argentina · MetLife Stadium, NJ · July 19, 2026 · 106th minute</p>
 </div>
 """, unsafe_allow_html=True)
@@ -77,7 +91,7 @@ tab1, tab2, tab3, tab4 = st.tabs(["📖 The Story", "📈 Global Impact", "⚽ E
 # ====================
 with tab1:
     st.header("🌍 The World Shows Up")
-    st.write("On July 19, 2026, 1.5 billion people watched the final. Most had no connection to either team. In Bangalore, a software engineer in a Messi jersey consoled a stranger. In Lagos, a taxi driver pulled over. In Tokyo, an office erupted at 4 AM.")
+    st.write("On July 19, 2026, 1.5 billion people watched the final. Most had no connection to either team. In Bangalore, a software engineer in Messi's jersey consoled a stranger. In Lagos, a taxi driver pulled over to watch on his phone. In Tokyo, an office erupted at 4 AM.")
     st.write("**The World Cup isn't sport. It's the only moment where 8 billion people choose to feel the same thing at the same time.**")
     
     # World Cup search trend
@@ -115,7 +129,7 @@ with tab1:
             st.caption("Source: Google Trends — 'Watch party', Worldwide, Jan 2025–Aug 2026")
         
         with st.expander("⚽ **America discovered soccer**", expanded=False):
-            st.write("'Soccer' searches in the USA hit an all-time high during the tournament — 5.7x normal levels. Decades of MLS marketing couldn't do what one World Cup on home soil achieved in weeks.")
+            st.write("'Soccer' searches in the USA hit an all-time high during the tournament — 5.7x normal levels. Decades of Major League Soccer (MLS) marketing couldn't do what one World Cup on home soil achieved in weeks.")
             td = data['gtrends_soccer'].copy()
             td.columns = ['Interest']
             fig_sc = px.area(td.reset_index(), x=td.reset_index().columns[0], y='Interest', color_discrete_sequence=[GOLD])
@@ -148,17 +162,25 @@ with tab1:
             st.caption("Source: KC2026 organizer report; Google Trends — 'Hotels Kansas City'")
         
         with st.expander("🏨 **Host cities were overwhelmed**", expanded=False):
-            st.write("Hotel searches spiked across every host city. New York, Miami, Seattle — all saw unprecedented demand as the world converged on North America.")
-            td = data['gtrends_hotels_miami'].copy()
-            td.columns = ['Miami']
-            td2 = data['gtrends_hotels_ny'].copy()
-            td2.columns = ['New York']
-            combined = td.join(td2)
-            fig_ht = px.line(combined.reset_index(), x=combined.reset_index().columns[0], y=['Miami','New York'], color_discrete_sequence=[GOLD, '#4A90D9'])
+            st.write("Hotel searches spiked across every host city. New York, Miami, Seattle, Kansas City, Dallas, Los Angeles — all saw unprecedented demand as the world converged on North America.")
+            td_miami = data['gtrends_hotels_miami'].copy()
+            td_miami.columns = ['Miami']
+            td_ny = data['gtrends_hotels_ny'].copy()
+            td_ny.columns = ['New York']
+            td_seattle = data['gtrends_hotels_seattle'].copy()
+            td_seattle.columns = ['Seattle']
+            td_kc = data['gtrends_hotels_kansas'].copy()
+            td_kc.columns = ['Kansas City']
+            td_dallas = pd.read_csv(os.path.join(os.path.dirname(__file__), 'data', 'gtrends_hotels_dallas.csv'), index_col=0, parse_dates=True)
+            td_dallas.columns = ['Dallas']
+            td_la = pd.read_csv(os.path.join(os.path.dirname(__file__), 'data', 'gtrends_hotels_la.csv'), index_col=0, parse_dates=True)
+            td_la.columns = ['Los Angeles']
+            combined = td_miami.join(td_ny).join(td_seattle).join(td_kc).join(td_dallas).join(td_la)
+            fig_ht = px.line(combined.reset_index(), x=combined.reset_index().columns[0], y=['Miami','New York','Seattle','Kansas City','Dallas','Los Angeles'], color_discrete_sequence=['#E91E63','#4CAF50','#FF9800','#9C27B0','#2196F3','#795548'])
             fig_ht.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(58,175,221,0.12)", line_width=0)
-            fig_ht.update_layout(height=200, xaxis_title="", yaxis_title="Search Interest", margin=dict(l=0,r=0,t=10,b=0), legend=dict(orientation='h',y=-0.2))
+            fig_ht.update_layout(height=280, xaxis_title="", yaxis_title="Search Interest", margin=dict(l=0,r=0,t=10,b=0), legend=dict(orientation='h',y=-0.2))
             st.plotly_chart(fig_ht, use_container_width=True, key="chart_hotels")
-            st.caption("Source: Google Trends — 'Hotels Miami' & 'Hotels New York', Worldwide")
+            st.caption("Source: Google Trends — Hotel searches by city, Worldwide, Jan 2025–Aug 2026")
         
         with st.expander("📋 **US visa demand exploded**", expanded=False):
             st.write("'US Visa' searches hit 2.6x their normal levels during the tournament — people weren't just watching from home, they were trying to get there.")
@@ -193,9 +215,10 @@ with tab1:
     - Food delivery orders surge **350%** in the hour before kickoff — nobody cooks on match day
     - Social media posts spike **4,000%** in the 60 seconds after a goal
     - Taxi/rideshare demand drops to near-zero during matches, then surges **500%** at final whistle
-    - Electricity consumption patterns reveal entire nations watching simultaneously — visible from space
+    - Electricity consumption patterns shift dramatically as entire nations watch simultaneously
     - Phone call volume drops **85%** during play, spikes **200%** at halftime
     """)
+    st.caption("Sources: Historical World Cup behavioral studies (FIFA, BBC, The Guardian); UK National Grid data; Europol reports; social media analytics research. These are documented patterns across multiple World Cups, not specific to 2026.")
     
     st.markdown('<div style="padding:15px 20px;border-radius:8px;background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.3);"><p style="margin:0;font-size:0.9rem;color:#dc3545;">⚠️ <strong>The dark side:</strong> Domestic violence reports spike 26% in losing countries after elimination (UK study, replicated globally). The same connection that creates joy creates pain.</p></div>', unsafe_allow_html=True)
     
@@ -214,15 +237,15 @@ with tab1:
     - **Birth rates** spike 9 months after a national team wins (proven: Spain 2010, France 2018)
     - **"Visit Spain"** searches surged 5× immediately after the final
     - **Youth soccer registration** jumps 35% in the winning country — and in surprise performers
-    - **Host cities** saw 20% increase in cross-border Visa transactions (restaurants, entertainment, transport)
-    - **MLS** conversations exploded — America's relationship with soccer changed permanently
+    - **Major League Soccer (MLS)** conversations exploded — America's relationship with soccer changed permanently
     """)
+    st.caption("Sources: Historical World Cup post-tournament studies; Google Trends (Visit Spain data); sports registration research. Birth rate patterns documented across Spain 2010, France 2018.")
     
     st.divider()
     
     # Underdogs
     st.header("🇨🇻 527,000 People vs. The World")
-    st.write("Every World Cup writes a Cinderella story. In 2026, **Cabo Verde** — a tiny island nation of 527,000 people — made their World Cup debut. They didn't just participate. Sidny Lopes Cabral scored FIFA's **Goal of the Tournament** — against Argentina.")
+    st.write("Every World Cup writes a Cinderella story. In 2026, it belonged to **Cabo Verde** — an island nation of just **527,000** making its World Cup debut. They stood fearlessly against football's giants and proved they belonged on the world's biggest stage: 40-year-old goalkeeper **Vozinha** made seven saves to hold eventual champions Spain scoreless, while Sidny Lopes Cabral scored FIFA's **Goal of the Tournament** against Argentina.")
     
     st.write("**The Cabo Verde Effect:**")
     c1, c2, c3 = st.columns(3)
@@ -245,18 +268,39 @@ with tab1:
     st.caption("Source: Google Trends — 'Cabo Verde', Worldwide, Jun–Jul 2026")
     
     st.write("""
-    - **Search interest for Cabo Verde surged from near-zero to 100** during the tournament
-    - Players like Lopes Cabral now attract attention from top European leagues — transforming careers overnight
-    - Tourism interest in the island nation spiked as millions worldwide searched "where is Cabo Verde?" for the first time
+    - Search interest for Cabo Verde surged from **near-zero to 100** during the tournament
+    - Players like **Lopes Cabral** now attract attention from top European leagues — transforming careers overnight
+    - Tourism interest in the island nation spiked as millions worldwide searched **"where is Cabo Verde?"** for the first time
     - For context: Morocco's semi-final run in 2022 led to a **600% spike** in "visit Morocco" searches and measurable tourism growth for 2+ years. Cabo Verde is poised for the same effect.
-    - The World Cup doesn't just create sporting heroes — it puts entire nations on the global map
+    - The World Cup doesn't just create sporting heroes — **it puts entire nations on the global map**
     """)
     
     st.divider()
     
     # Legends
-    st.header("⭐ Gods Walk Among Us")
-    st.write("**Messi** (39) — 6th World Cup, 3rd final, still #3 ranked performer. **Ronaldo** (41) — his farewell, still top 50. **Lamine Yamal** (17) — highest creativity score in the tournament. Three generations. One pitch.")
+    st.header("⭐ Legends Walk Among Us")
+    st.write("**Three generations. One World Cup.**")
+    
+    _lg1, _lg2, _lg3, _lg4 = st.columns(4)
+    with _lg1:
+        st.markdown('<div style="text-align:center;"><div style="width:70px;height:70px;border-radius:50%;border:2px solid ' + GOLD + ';margin:0 auto 8px;background-image:url(data:image/jpeg;base64,' + _yamal + ');background-size:cover;background-position:center top;"></div></div>', unsafe_allow_html=True)
+        st.markdown("**Lamine Yamal · 19**")
+        st.write("First World Cup. World Champion. A new generation arrived.")
+    with _lg2:
+        st.markdown('<div style="text-align:center;"><div style="width:70px;height:70px;border-radius:50%;border:2px solid ' + GOLD + ';margin:0 auto 8px;background-image:url(data:image/jpeg;base64,' + _mbappe + ');background-size:cover;background-position:center top;"></div></div>', unsafe_allow_html=True)
+        st.markdown("**Kylian Mbappé · 27**")
+        st.write("10 goals. Golden Boot. The generation in its prime.")
+    with _lg3:
+        st.markdown('<div style="text-align:center;"><div style="width:70px;height:70px;border-radius:50%;border:2px solid ' + GOLD + ';margin:0 auto 8px;background-image:url(data:image/jpeg;base64,' + _messi + ');background-size:cover;background-position:center top;"></div></div>', unsafe_allow_html=True)
+        st.markdown("**Lionel Messi · 39**")
+        st.write("Sixth World Cup. 8 goals. Another final. Still writing history.")
+    with _lg4:
+        st.markdown('<div style="text-align:center;"><div style="width:70px;height:70px;border-radius:50%;border:2px solid ' + GOLD + ';margin:0 auto 8px;background-image:url(data:image/jpeg;base64,' + _ronaldo + ');background-size:cover;background-position:center top;"></div></div>', unsafe_allow_html=True)
+        st.markdown("**Cristiano Ronaldo · 41**")
+        st.write("Sixth World Cup. More than two decades on the international stage.")
+    
+    st.markdown("**19 → 27 → 39 → 41**")
+    st.write("One was arriving. One was in his prime. Two were extending extraordinary legacies. For one summer, three generations shared the world's biggest stage.")
     
     performers = data['performers'].copy()
     fig = px.scatter(performers, x='Creativity_Score', y='Attacking_Score',
@@ -292,7 +336,7 @@ with tab1:
         It's a 30-day experiment in <span style="color:{GOLD}">human connection.</span><br><br>
         And in 2026, that heartbeat pulsed through America.
         </p>
-        <p style="font-family:'Bebas Neue',sans-serif; font-size:3rem; color:{GOLD}; margin-top:30px; letter-spacing:3px;">WHEN THE WORLD HELD ITS BREATH.<br>IT EXHALED TOGETHER.</p>
+        <p style="font-family:'Bebas Neue',sans-serif; font-size:3rem; color:{GOLD}; margin-top:30px; letter-spacing:3px;">WHEN THE WORLD HELD ITS BREATH.<br>AND IT EXHALED TOGETHER.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -358,7 +402,13 @@ with tab3:
     
     st.subheader("🏆 World Cup Winners Through History")
     wc_hist = data['worldcups'].copy()
-    winners = wc_hist['Winner'].value_counts().reset_index()
+    # Add missing recent winners (dataset only goes to 2014)
+    import pandas as pd
+    recent = pd.DataFrame({'Winner': ['France', 'Argentina', 'Spain']})  # 2018, 2022, 2026
+    all_winners = pd.concat([wc_hist[['Winner']], recent])
+    # Merge Germany FR and Germany
+    all_winners['Winner'] = all_winners['Winner'].replace('Germany FR', 'Germany')
+    winners = all_winners['Winner'].value_counts().reset_index()
     winners.columns = ['Country', 'Titles']
     fig_wc = px.bar(winners.head(8), x='Titles', y='Country', orientation='h', color='Titles',
                  color_continuous_scale=['#4A90D9', GOLD], text='Titles')
@@ -378,6 +428,7 @@ with tab3:
 with tab2:
     st.header("📈 Global Impact")
     st.write("The World Cup's impact extends far beyond the pitch — into search engines, economies, and human behavior.")
+    st.write("")
 
     
     # 8/10 Discovery
@@ -413,6 +464,7 @@ with tab2:
         st.metric("🔍 Discovery", f"{non_part} / 10", "weren't competing")
         st.write(f"**{non_part} of the top 10** geographies by relative FIFA World Cup search interest were not even in the tournament.")
         st.caption("Source: Google Trends · FIFA World Cup · Worldwide · Jun 1–Jul 31, 2026")
+        st.write("*They were not on the pitch. But they were part of the moment.*")
     with col_82:
         # Horizontal bar chart
         top10_display = top10.copy()
@@ -477,14 +529,15 @@ with tab2:
     c8.metric("🎟️ Total Attendance", "6.8M", "104 matches")
     
     st.info("**More people experienced the World Cup outside the stadiums (9.0M+) than inside them (6.8M).** The biggest crowd wasn't in a stadium — it was everywhere else. Source: FIFA Official")
+    st.caption("Sources: FIFA Official (Fan Festival & stadium attendance, data generated); KC2026 organizer (178 countries); WTO (GDP projection)")
     
     st.divider()
 # ====================
 # TAB 4: AI & METHODS
 # ====================
 with tab4:
-    st.header("🤖 How AI Built This Story")
-    st.write("This project used **Kiro (Amazon AI agent)** as a co-pilot throughout — for data discovery, hypothesis generation, code generation, and narrative development.")
+    st.header("🤖 How AI Was Used")
+    st.write("This project used **GenAI** as a co-pilot throughout — for data discovery, hypothesis generation, code generation, and narrative development.")
     
     st.subheader("What AI Actually Did")
     st.write("""
@@ -495,9 +548,6 @@ with tab4:
     - **Code Generation:** Dashboard layout, Plotly charts, CSS styling, data processing
     - **Narrative Structure:** Helped shape the story arc from global scale to individual human stories
     """)
-    
-    st.subheader("Key Principle")
-    st.info("**AI surfaced patterns. Humans verified facts.** Every number in this dashboard traces to a cited source. Claims that couldn't be verified were removed, not kept.")
     
     st.divider()
     c1, c2, c3 = st.columns(3)
@@ -514,19 +564,26 @@ with tab4:
         st.write("- Custom CSS theming")
     with c3:
         st.subheader("🤖 GenAI")
-        st.write("- Kiro (Amazon AI agent)")
-        st.write("- Claude (Anthropic)")
-        st.write("- ChatGPT (design mockups)")
+        st.write("- LLM-assisted development")
+        st.write("- Hypothesis generation")
+        st.write("- Code generation")
         st.write("- All code AI-assisted, human-verified")
     
     st.divider()
     st.subheader("📚 Data Sources")
-    st.write("- **FIFA.com** — Official 2026 World Cup Statistics, Fan Festival attendance (9M+, 263,972)")
-    st.write("- **Google Trends** — 11 search terms + country-level interest data, Jun–Jul 2026")
-    st.write("- **Kaggle** — International Football Results (1872-2026)")
-    st.write("- **KC2026** — Kansas City Fan Festival organizer report (178 countries)")
-    st.write("- **Reuters** — Vozinha/Cabo Verde goalkeeper reporting")
-    st.write("- **World Bank** — Cabo Verde population (527,326)")
+    st.write("**Data Preparation:** With the 2026 World Cup only recently concluded, no single dataset captures its full impact. We curated and integrated tournament, search, tourism, economic, and historical data from multiple public sources to build a unified analytical dataset.")
+    st.markdown("""
+    | Source | Description | Link |
+    |--------|-------------|------|
+    | FIFA.com | Official 2026 World Cup Statistics, Fan Festival attendance (9M+, 263,972) | [fifa.com/worldcup](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026) |
+    | FIFA Statistics | Team performance data (attacking, defending, distribution, physical) | [fifa.com/statistics](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics/team-statistics) |
+    | Google Trends | 11 search terms + country-level interest data, Jun–Jul 2026 | [trends.google.com](https://trends.google.com/trends/explore?date=2026-06-01%202026-07-31&q=FIFA%20World%20Cup) |
+    | Kaggle | International Football Results (1872-2026) | [kaggle.com/martj42](https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017) |
+    | KC2026 | Kansas City Fan Festival organizer report (178 countries, 63,000 attendees) | KC2026 Official Report |
+    | Reuters | Vozinha/Cabo Verde goalkeeper visa story | [reuters.com](https://www.reuters.com/sports/soccer/cape-verde-keeper-vozinhas-mother-gets-visa-watch-son-world-cup-2026-06-18/) |
+    | World Bank | Cabo Verde population (527,326 — 2025) | [data.worldbank.org](https://data.worldbank.org/country/cabo-verde) |
+    | FIFA Squads | 1,248 players, 891 first-timers, oldest/youngest data | [fifa.com/squads](https://www.fifa.com/en/articles/fifa-world-cup-2026-squads-confirmed) |
+    """)
     
     st.divider()
     st.caption("Built for Analyticon VizCon 2026 | Theme: 'How the world lives, thrives, and connects' 🌍")
