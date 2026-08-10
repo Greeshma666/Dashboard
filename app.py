@@ -77,7 +77,11 @@ c1, c2, c3, c4 = st.columns(4)
 c1.metric("🌍 Nations", "48", "Most in history")
 c2.metric("🏟️ Host Cities", "16", "3 countries")
 c3.metric("👷 Jobs (Est.)", "~824K", "FTE — FIFA/WTO study")
-c4.metric("📡 Internet Traffic", "7%", "During the final")
+c4.metric("📡 Internet", "Up to 7%", "of global traffic (projected)")
+c1.markdown("[Source](https://inside.fifa.com/strategic-objectives-2023-2027/goal-9)", unsafe_allow_html=True)
+c2.markdown("[Source](https://inside.fifa.com/strategic-objectives-2023-2027/goal-9)", unsafe_allow_html=True)
+c3.markdown("[Source](https://inside.fifa.com/organisation/media-releases/fifa-wto-study-estimates-usd-47-billion-economic-output-from-fifa-club-world)", unsafe_allow_html=True)
+c4.markdown("[Source](https://www.sportsbusinessjournal.com/Articles/2026/06/08/numbers-to-know-around-the-world-cup/)", unsafe_allow_html=True)
 
 st.divider()
 
@@ -103,8 +107,9 @@ with tab1:
                   annotation_text="World Cup 2026", annotation_position="top")
     fig.update_layout(height=350, xaxis_title="", yaxis_title="Search Interest (0-100)")
     st.plotly_chart(fig, use_container_width=True)
+    st.markdown("*Source: [Google Trends — World Cup, Worldwide](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=World%20Cup)*")
     
-    st.info("💡 **Did you know?** 'World Cup' search interest spiked **117×** vs baseline. 'Watch party' went from ZERO to peak 100 — an infinite spike.")
+    st.info("💡 **Did you know?** 'World Cup' search interest spiked **100×** vs baseline. 'Watch party' went from ZERO to peak 100 — an infinite spike.")
     
     st.divider()
     
@@ -202,19 +207,19 @@ with tab1:
     
     c1, c2, c3 = st.columns(3)
     c1.metric("⚡ Power Grid", "+3 GW", "halftime kettle surge (UK)")
-    c2.metric("🌐 Internet", "7%", "of global traffic during final")
+    c2.metric("🌐 Internet", "Up to 7%", "projected global traffic")
     c3.metric("📊 Data", "13 PB", "transported (as of quarterfinals)")
     
     st.write("""
     - **UK electricity demand surges up to 3 GW** during halftime as millions boil kettles simultaneously — a phenomenon known as "TV pickup" documented by the UK's National Energy System Operator
-    - **7% of all global internet traffic** was consumed by the 2026 final match alone (FIFA official)
+    - **Up to 7% of global internet traffic** was projected to be consumed during the final (Bank of America Global Research — pre-tournament estimate)
     - **13 petabytes** of data transported across tournament and broadcast networks as of the quarterfinals (FIFA official)
     - **Water systems spike at halftime** — documented across UK water utilities during World Cup matches
     - **Road traffic drops significantly** during major knockout matches as people stay home to watch
     - **City noise levels drop measurably** during play, then spike at goals — documented by urban sound monitoring
     - **Food delivery demand surges** before kickoff as fans order in rather than cook
     """)
-    st.markdown("*Sources: [UK NESO — TV Pickup phenomenon](https://www.neso.energy) | [FIFA — 2026 tournament by numbers](https://www.fifa.com/en/articles/fifa-world-cup-2026-by-numbers) | UK Water utilities historical reports. These are documented patterns across multiple World Cups.*")
+    st.markdown("*Sources: [UK NESO — TV Pickup phenomenon](https://www.neso.energy) | [FIFA — 2026 tournament by numbers](https://www.fifa.com/en/articles/fifa-world-cup-2026-by-numbers) | [Sports Business Journal / Bank of America Global Research](https://www.sportsbusinessjournal.com) (7% internet projection) | UK Water utilities historical reports. These are documented patterns across multiple World Cups.*")
     
     st.markdown('<div style="padding:15px 20px;border-radius:8px;background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.3);"><p style="margin:0;font-size:0.9rem;color:#dc3545;">⚠️ <strong>The dark side:</strong> Domestic violence reports spike 26% in losing countries after elimination (UK study, replicated globally). The same connection that creates joy creates pain.</p></div>', unsafe_allow_html=True)
     
