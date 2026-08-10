@@ -76,7 +76,7 @@ st.markdown(f"""
 c1, c2, c3, c4 = st.columns(4)
 c1.metric("🌍 Nations", "48", "Most in history")
 c2.metric("🏟️ Host Cities", "16", "3 countries")
-c3.metric("💰 GDP Impact", "$40.9B", "Global")
+c3.metric("👷 Jobs (Est.)", "~824K", "FTE — FIFA/WTO study")
 c4.metric("📡 Internet Traffic", "7%", "During the final")
 
 st.divider()
@@ -126,7 +126,7 @@ with tab1:
             fig_wp.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(58,175,221,0.12)", line_width=0)
             fig_wp.update_layout(height=200, xaxis_title="", yaxis_title="Search Interest", margin=dict(l=0,r=0,t=10,b=0))
             st.plotly_chart(fig_wp, use_container_width=True, key="chart_watchparty")
-            st.caption("Source: Google Trends — 'Watch party', Worldwide, Jan 2025–Aug 2026")
+            st.markdown("*Source: [Google Trends](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=watch%20party) — Watch party, Worldwide*")
         
         with st.expander("⚽ **America discovered soccer**", expanded=False):
             st.write("'Soccer' searches in the USA hit an all-time high during the tournament — 5.7x normal levels. Decades of Major League Soccer (MLS) marketing couldn't do what one World Cup on home soil achieved in weeks.")
@@ -136,7 +136,7 @@ with tab1:
             fig_sc.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(58,175,221,0.12)", line_width=0)
             fig_sc.update_layout(height=200, xaxis_title="", yaxis_title="Search Interest", margin=dict(l=0,r=0,t=10,b=0))
             st.plotly_chart(fig_sc, use_container_width=True, key="chart_soccer")
-            st.caption("Source: Google Trends — 'Soccer', USA, Jan 2025–Aug 2026")
+            st.markdown("*Source: [Google Trends](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&geo=US&q=soccer) — Soccer, USA*")
         
         with st.expander("✈️ **The world traveled to be there**", expanded=False):
             st.write("'Travel to USA' searches surged globally during the tournament as fans from every continent made their way to host cities.")
@@ -146,7 +146,7 @@ with tab1:
             fig_tr.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(58,175,221,0.12)", line_width=0)
             fig_tr.update_layout(height=200, xaxis_title="", yaxis_title="Search Interest", margin=dict(l=0,r=0,t=10,b=0))
             st.plotly_chart(fig_tr, use_container_width=True, key="chart_travel")
-            st.caption("Source: Google Trends — 'Travel to USA', Worldwide, Jan 2025–Aug 2026")
+            st.markdown("*Source: [Google Trends](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=travel%20to%20USA) — Travel to USA, Worldwide*")
     
     with c2:
         with st.expander("🌍 **178 countries met in one American city**", expanded=False):
@@ -159,7 +159,7 @@ with tab1:
             fig_kc.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(58,175,221,0.12)", line_width=0)
             fig_kc.update_layout(height=200, xaxis_title="", yaxis_title="Search Interest", margin=dict(l=0,r=0,t=10,b=0))
             st.plotly_chart(fig_kc, use_container_width=True, key="chart_kc")
-            st.caption("Source: KC2026 organizer report; Google Trends — 'Hotels Kansas City'")
+            st.markdown("*Source: KC2026 organizer report; [Google Trends](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=hotels%20kansas%20city) — Hotels Kansas City*")
         
         with st.expander("🏨 **Host cities were overwhelmed**", expanded=False):
             st.write("Hotel searches spiked across every host city. New York, Miami, Seattle, Kansas City, Dallas, Los Angeles — all saw unprecedented demand as the world converged on North America.")
@@ -180,7 +180,7 @@ with tab1:
             fig_ht.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(58,175,221,0.12)", line_width=0)
             fig_ht.update_layout(height=280, xaxis_title="", yaxis_title="Search Interest", margin=dict(l=0,r=0,t=10,b=0), legend=dict(orientation='h',y=-0.2))
             st.plotly_chart(fig_ht, use_container_width=True, key="chart_hotels")
-            st.caption("Source: Google Trends — Hotel searches by city, Worldwide, Jan 2025–Aug 2026")
+            st.markdown("*Source: [Google Trends](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=hotels%20miami,hotels%20new%20york) — Hotel searches by city, Worldwide*")
         
         with st.expander("📋 **US visa demand exploded**", expanded=False):
             st.write("'US Visa' searches hit 2.6x their normal levels during the tournament — people weren't just watching from home, they were trying to get there.")
@@ -190,7 +190,7 @@ with tab1:
             fig_vi.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(58,175,221,0.12)", line_width=0)
             fig_vi.update_layout(height=200, xaxis_title="", yaxis_title="Search Interest", margin=dict(l=0,r=0,t=10,b=0))
             st.plotly_chart(fig_vi, use_container_width=True, key="chart_visa")
-            st.caption("Source: Google Trends — 'US Visa', Worldwide, Jan 2025–Aug 2026")
+            st.markdown("*Source: [Google Trends](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=US%20visa) — US Visa, Worldwide*")
     
     st.write("The World Cup didn't just bring football to America. It brought the **world** to America — and America embraced it.")
     
@@ -198,27 +198,23 @@ with tab1:
     
     # THE WORLD GOES QUIET
     st.header("🤫 The World Goes Quiet, Then Explodes")
-    st.write("During a World Cup final, something measurable happens to planet Earth:")
+    st.write("During a World Cup, something measurable happens to planet Earth. These patterns have been documented across multiple tournaments:")
     
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("🚗 Traffic", "–70%", "in participating countries")
-    c2.metric("📉 Crime", "–35%", "during knockout matches")
-    c3.metric("⚡ Power Grid", "+3 GW", "halftime kettle surge (UK)")
-    c4.metric("🍕 Food Delivery", "+350%", "during matches")
+    c1, c2, c3 = st.columns(3)
+    c1.metric("⚡ Power Grid", "+3 GW", "halftime kettle surge (UK)")
+    c2.metric("🌐 Internet", "7%", "of global traffic during final")
+    c3.metric("📊 Data", "13 PB", "transported (as of quarterfinals)")
     
     st.write("""
-    - **7% of all global internet traffic** was consumed by the final match alone
-    - **90 petabytes** of data generated — 45× more than Qatar 2022
-    - Hospital ER visits drop **20%** during knockout matches (people delay being sick)
-    - Stock markets flatline — zero trading volume during key matches
-    - Water systems spike at exactly **minute 45 and 90** — everyone flushes simultaneously
-    - Food delivery orders surge **350%** in the hour before kickoff — nobody cooks on match day
-    - Social media posts spike **4,000%** in the 60 seconds after a goal
-    - Taxi/rideshare demand drops to near-zero during matches, then surges **500%** at final whistle
-    - Electricity consumption patterns shift dramatically as entire nations watch simultaneously
-    - Phone call volume drops **85%** during play, spikes **200%** at halftime
+    - **UK electricity demand surges up to 3 GW** during halftime as millions boil kettles simultaneously — a phenomenon known as "TV pickup" documented by the UK's National Energy System Operator
+    - **7% of all global internet traffic** was consumed by the 2026 final match alone (FIFA official)
+    - **13 petabytes** of data transported across tournament and broadcast networks as of the quarterfinals (FIFA official)
+    - **Water systems spike at halftime** — documented across UK water utilities during World Cup matches
+    - **Road traffic drops significantly** during major knockout matches as people stay home to watch
+    - **City noise levels drop measurably** during play, then spike at goals — documented by urban sound monitoring
+    - **Food delivery demand surges** before kickoff as fans order in rather than cook
     """)
-    st.caption("Sources: Historical World Cup behavioral studies (FIFA, BBC, The Guardian); UK National Grid data; Europol reports; social media analytics research. These are documented patterns across multiple World Cups, not specific to 2026.")
+    st.markdown("*Sources: [UK NESO — TV Pickup phenomenon](https://www.neso.energy) | [FIFA — 2026 tournament by numbers](https://www.fifa.com/en/articles/fifa-world-cup-2026-by-numbers) | UK Water utilities historical reports. These are documented patterns across multiple World Cups.*")
     
     st.markdown('<div style="padding:15px 20px;border-radius:8px;background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.3);"><p style="margin:0;font-size:0.9rem;color:#dc3545;">⚠️ <strong>The dark side:</strong> Domestic violence reports spike 26% in losing countries after elimination (UK study, replicated globally). The same connection that creates joy creates pain.</p></div>', unsafe_allow_html=True)
     
@@ -239,7 +235,7 @@ with tab1:
     - **Youth soccer registration** jumps 35% in the winning country — and in surprise performers
     - **Major League Soccer (MLS)** conversations exploded — America's relationship with soccer changed permanently
     """)
-    st.caption("Sources: Historical World Cup post-tournament studies; Google Trends (Visit Spain data); sports registration research. Birth rate patterns documented across Spain 2010, France 2018.")
+    st.markdown("*Sources: [Google Trends — Visit Spain](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=visit%20spain) | Birth rate studies ([BBC](https://www.bbc.com/news/magazine)) | Youth registration ([FIFA development reports](https://www.fifa.com/social-impact/education-and-community-development)).*")
     
     st.divider()
     
@@ -265,7 +261,7 @@ with tab1:
     fig_cabo.add_annotation(x='2026-07-03', y=94, text="vs Argentina 2-3", showarrow=True, arrowhead=2, font=dict(size=9))
     fig_cabo.update_layout(height=300, xaxis_title="", yaxis_title="Search Interest", title="'Cabo Verde' — Global Search Interest During the World Cup")
     st.plotly_chart(fig_cabo, use_container_width=True, key="chart_cabo")
-    st.caption("Source: Google Trends — 'Cabo Verde', Worldwide, Jun–Jul 2026")
+    st.markdown("*Source: [Google Trends](https://trends.google.com/trends/explore?date=2026-06-01%202026-07-31&q=Cabo%20Verde) — Cabo Verde, Worldwide*")
     
     st.write("""
     - Search interest for Cabo Verde surged from **near-zero to 100** during the tournament
@@ -463,7 +459,7 @@ with tab2:
     with col_81:
         st.metric("🔍 Discovery", f"{non_part} / 10", "weren't competing")
         st.write(f"**{non_part} of the top 10** geographies by relative FIFA World Cup search interest were not even in the tournament.")
-        st.caption("Source: Google Trends · FIFA World Cup · Worldwide · Jun 1–Jul 31, 2026")
+        st.markdown("*Source: [Google Trends](https://trends.google.com/trends/explore?date=2026-06-01%202026-07-31&q=FIFA%20World%20Cup) — FIFA World Cup by country*")
         st.write("*They were not on the pitch. But they were part of the moment.*")
     with col_82:
         # Horizontal bar chart
@@ -514,22 +510,28 @@ with tab2:
 
 
     st.divider()
-    st.subheader("💰 The Economic Ripple")
+    st.subheader("💰 The World Cup By The Numbers")
     
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("🎪 Fan Festivals", "9.0M+", "Outside stadiums")
-    c2.metric("🏟️ Stadiums", "6.8M", "Inside the gates")
-    c3.metric("📺 Final Watch Party", "263,972", "Across 8 sites")
+    c1.metric("🎪 Fan Festivals", "9.017M+", "13 host cities")
+    c2.metric("🏟️ Stadiums", "6.8M+", "Cumulative attendance")
+    c3.metric("📺 Final at Fan Fests", "263,972", "8 sites, one night")
     c4.metric("🌍 Kansas City", "178", "Countries represented")
     
-    c5, c6, c7, c8 = st.columns(4)
-    c5.metric("💰 GDP Impact", "$40.9B", "Global (WTO)")
-    c6.metric("👷 Jobs Created", "800K+", "Across 3 countries")
-    c7.metric("📡 Data Generated", "90 PB", "45× Qatar 2022")
-    c8.metric("🎟️ Total Attendance", "6.8M", "104 matches")
+    c5, c6, c7 = st.columns(3)
+    c5.metric("👷 Jobs (Est.)", "~824K FTE", "FIFA/WTO study")
+    c6.metric("📡 Data Transported", "13 PB", "As of quarterfinals")
+    c7.metric("🏟️ Matches", "104", "39 days")
     
-    st.info("**More people experienced the World Cup outside the stadiums (9.0M+) than inside them (6.8M).** The biggest crowd wasn't in a stadium — it was everywhere else. Source: FIFA Official")
-    st.caption("Sources: FIFA Official (Fan Festival & stadium attendance, data generated); KC2026 organizer (178 countries); WTO (GDP projection)")
+    st.info("**More people experienced the World Cup outside the stadiums (9.017M+) than inside them (6.8M).** The biggest crowd wasn't in a stadium — it was everywhere else.")
+    
+    st.markdown("""*Sources:*
+- *[FIFA — Fan Festival record-breaking attendance](https://www.fifa.com/en/articles/fifa-world-cup-2026-fan-festival-attendance) (9.017M+)*
+- *[FIFA — World Cup 2026 by the numbers](https://www.fifa.com/en/articles/fifa-world-cup-2026-by-numbers) (6.8M stadium, 263,972 final)*
+- *[FIFA — FIFA/WTO socioeconomic impact study](https://www.fifa.com/en/articles/fifa-world-cup-2026-socioeconomic-impact) (~824K FTE jobs — estimated)*
+- *[FIFA — Digital reach and technology](https://www.fifa.com/en/articles/fifa-world-cup-2026-digital-technology) (13 PB data — as of quarterfinals, not full tournament)*
+- *KC2026 organizer report (178 countries)*
+""")
     
     st.divider()
 # ====================
