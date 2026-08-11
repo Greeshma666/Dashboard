@@ -606,7 +606,7 @@ with tab4:
     | FIFA Statistics | Team performance data (attacking, defending, distribution, physical) | [fifa.com/statistics](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics/team-statistics) |
     | Google Trends | 11 search terms + country-level interest data, Jun–Jul 2026 | [trends.google.com](https://trends.google.com/trends/explore?date=2026-06-01%202026-07-31&q=FIFA%20World%20Cup) |
     | Kaggle | International Football Results (1872-2026) | [kaggle.com/martj42](https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017) |
-    | KC2026 | Kansas City Fan Festival organizer report (178 countries, 63,000 attendees) | KC2026 Official Report |
+    | KC2026 | Kansas City Fan Festival organizer report (178 countries, 63,000 attendees) | [kshb.com](https://www.kshb.com/sports/world-cup/kc2026-178-countries-represented-during-first-stretch-of-fifa-fan-festival) |
     | Reuters | Vozinha/Cabo Verde goalkeeper visa story | [reuters.com](https://www.reuters.com/sports/soccer/cape-verde-keeper-vozinhas-mother-gets-visa-watch-son-world-cup-2026-06-18/) |
     | World Bank | Cabo Verde population (527,326 — 2025) | [data.worldbank.org](https://data.worldbank.org/country/cabo-verde) |
     | FIFA Squads | 1,248 players, 891 first-timers, oldest/youngest data | [fifa.com/squads](https://www.fifa.com/en/articles/fifa-world-cup-2026-squads-confirmed) |
