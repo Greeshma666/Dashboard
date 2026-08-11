@@ -223,6 +223,7 @@ with tab1:
     """)
     st.markdown('<div style="padding:15px 20px;border-radius:8px;background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.3);"><p style="margin:0;font-size:0.9rem;color:#dc3545;">⚠️ <strong>The dark side:</strong> Domestic abuse incidents rose 38% when England lost during World Cup matches, according to UK research. The same connection that creates joy can also expose a darker social reality.</p></div>', unsafe_allow_html=True)
     
+    st.write('')
     st.markdown("*Sources: [Severn Trent — water-demand spikes](https://www.stwater.co.uk/news/news-releases/water-result---football-and-heatwave-pushing-up-demand-for-water/) | [Hindustan Times — water/bathroom demand spikes](https://www.hindustantimes.com/sports/football/when-bathroom-breaks-are-reserved-world-during-fifa-world-cup-final-2026-argentina-vs-spain-101784437568159.html) | [Houston Chronicle — noise measurements](https://www.houstonchronicle.com/projects/2026/houston-world-cup-noise/) | [Reuters — food demand](https://www.reuters.com/business/uks-dominos-pizza-logs-higher-interim-profit-helped-by-soccer-2026-08-04/) | [Lancaster University — domestic abuse study](https://research.lancaster-university.uk/en/publications/can-the-fifa-world-cup-football-soccer-tournament-be-associated-w/). Findings combine observed 2026 data with documented patterns from previous World Cups.*")
     
     st.divider()
