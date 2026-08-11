@@ -272,7 +272,7 @@ with tab1:
     fig_cabo.add_annotation(x='2026-07-03', y=94, text="vs Argentina 2-3", showarrow=True, arrowhead=2, font=dict(size=9))
     fig_cabo.update_layout(height=300, xaxis_title="", yaxis_title="Search Interest", title="'Cabo Verde' — Global Search Interest During the World Cup")
     st.plotly_chart(fig_cabo, use_container_width=True, key="chart_cabo")
-    st.markdown("*Source: [Google Trends](https://trends.google.com/trends/explore?date=2026-06-01%202026-07-31&q=Cabo%20Verde) — Cabo Verde, Worldwide*")
+    st.markdown("*Sources: [Google Trends — Cabo Verde](https://trends.google.com/trends/explore?date=2026-06-01%202026-07-31&q=Cabo%20Verde) | [Reuters — Vozinha move to Colo-Colo](https://www.reuters.com/sports/soccer/cape-verde-keeper-vozinha-says-he-always-believed-he-was-big-club-player-after-2026-08-05/)*")
     
     st.write("""
     - Search interest for Cabo Verde surged from **near-zero to 100** during the tournament
