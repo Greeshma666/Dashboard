@@ -307,6 +307,7 @@ with tab1:
     
     st.markdown("**19 → 27 → 39 → 41**")
     st.write("One was arriving. One was in his prime. Two were extending extraordinary legacies. For one summer, three generations shared the world's biggest stage.")
+    st.markdown("*Source: [FIFA — Player Statistics](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics/player-statistics)*")
     
     performers = data['performers'].copy()
     fig = px.scatter(performers, x='Creativity_Score', y='Attacking_Score',
