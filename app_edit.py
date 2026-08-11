@@ -529,7 +529,7 @@ with tab2:
     
     st.info("""💡 **Key findings:**
     - "World Cup" searches spiked **100×** vs baseline
-    - "Visit Spain" surged **10×** after Spain's victory
+    - Global search interest for "Visit Spain" rose from 44 to 51 following the Final
     - US visa applications hit **3.5×** peak during tournament
     - Hotel searches in NYC spiked **8×**
     - "Soccer" in USA hit all-time high — **~6×** normal
