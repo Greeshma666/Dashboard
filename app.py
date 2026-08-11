@@ -209,6 +209,9 @@ with tab1:
     c1.metric("⚡ Power Grid", "2.8 GW", "record UK World Cup TV pickup")
     c2.metric("🌐 Internet", "Up to 7%", "projected global traffic")
     c3.metric("📊 Data", "13 PB", "transported (as of quarterfinals)")
+    c1.markdown("[Source](https://www.neso.energy/news/neso-ready-record-electricity-demand-during-biggest-ever-fifa-world-cup)", unsafe_allow_html=True)
+    c2.markdown("[Source](https://www.sportsbusinessjournal.com/Articles/2026/06/08/numbers-to-know-around-the-world-cup/)", unsafe_allow_html=True)
+    c3.markdown("[Source](https://football-technology.fifa.com/organisation/media-releases/packed-stadiums-record-digital-reach-world-cup-2026-numbers-unprecedented-scale)", unsafe_allow_html=True)
     
     st.write("""
     - **UK electricity demand recorded a 2.8 GW TV pickup** during the World Cup — millions boiling kettles simultaneously, a phenomenon documented by the UK's National Energy System Operator (NESO)
