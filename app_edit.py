@@ -216,7 +216,7 @@ with tab1:
     - **UK electricity demand recorded a 2.8 GW TV pickup** during the World Cup — millions boiling kettles simultaneously, a phenomenon documented by the UK's National Energy System Operator (NESO)
     - **Up to 7% of global internet traffic** was projected to be consumed during the final (Bank of America Global Research — pre-tournament estimate)
     - **13 petabytes** of data transported across tournament and broadcast networks as of the quarterfinals (FIFA official)
-    - **Water systems spike at halftime** — documented across UK water utilities during World Cup matches
+    - **Water systems spike at exactly minute 45** — everyone flushes simultaneously 🚽
     - **Road traffic drops significantly** during major knockout matches as people stay home to watch
     - **City noise levels drop measurably** during play, then spike at goals — documented by urban sound monitoring
     - **Food delivery demand surges** before kickoff as fans order in rather than cook
