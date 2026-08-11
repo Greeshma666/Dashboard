@@ -258,6 +258,7 @@ with tab1:
     c3.metric("⚽ Goal of Tournament", "🏆", "vs Argentina")
     c1.markdown("[Source](https://trends.google.com/trends/explore?date=2026-06-01%202026-07-31&q=Cabo%20Verde)", unsafe_allow_html=True)
     c2.markdown("[Source](https://data.worldbank.org/country/cabo-verde)", unsafe_allow_html=True)
+    c3.markdown("[Source](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026)", unsafe_allow_html=True)
     
     # Cabo Verde Google Trends chart
     cabo_trends = pd.read_csv(os.path.join(os.path.dirname(__file__), 'data', 'gtrends_cabo_verde.csv'), skiprows=2)
