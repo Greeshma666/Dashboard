@@ -442,7 +442,7 @@ with tab2:
     
     # 8/10 Discovery
     st.subheader("🌍 The World Cup Didn't Stop at 48")
-    st.write("48 nations competed. But the passion was global — the competition wasn't.")
+    st.write("48 nations competed. But the passion knew no borders.")
     
     # Load Google Trends by country data
     import numpy as np
