@@ -278,7 +278,7 @@ with tab1:
     - Search interest for Cabo Verde surged from **near-zero to 100** during the tournament
     - For players, the spotlight can change a career overnight — 40-year-old goalkeeper **Vozinha's** World Cup heroics attracted multiple offers before earning him a move to Chilean giants **Colo-Colo**
     - Tourism interest in the island nation spiked as millions worldwide searched **"where is Cabo Verde?"** for the first time
-    - For context: Morocco's semi-final run in 2022 led to a **600% spike** in "visit Morocco" searches and measurable tourism growth for 2+ years. Cabo Verde is poised for the same effect.
+    - Morocco's semi-final run in 2022 led to a **600% spike** in "visit Morocco" searches and measurable tourism growth for 2+ years. Cabo Verde is poised for the same effect.
     - The World Cup doesn't just create sporting heroes — **it puts entire nations on the global map**
     """)
     
