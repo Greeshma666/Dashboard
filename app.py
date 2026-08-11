@@ -234,16 +234,16 @@ with tab1:
     
     c1, c2, c3 = st.columns(3)
     c1.metric("👶 Birth Rates", "+spike", "9 months after wins")
-    c2.metric("✈️ Tourism", "5× surge", "'Visit Spain' searches")
+    c2.metric("✈️ Tourism", "10× surge", "'Visit Spain' searches")
     c3.metric("⚽ Youth Soccer", "+35%", "registration in winning country")
     
     st.write("""
-    - **Birth rates** spike 9 months after a national team wins (proven: Spain 2010, France 2018)
-    - **"Visit Spain"** searches surged 5× immediately after the final
+    - **Birth rates** can spike 9 months after a national team wins — researchers identified 1,000+ additional births in South Africa around nine months after the 2010 World Cup
+    - **"Visit Spain"** searches surged 10× immediately after the final
     - **Youth soccer registration** jumps 35% in the winning country — and in surprise performers
     - **Major League Soccer (MLS)** conversations exploded — America's relationship with soccer changed permanently
     """)
-    st.markdown("*Sources: [Google Trends — Visit Spain](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=visit%20spain) | Birth rate studies ([BBC](https://www.bbc.com/news/magazine)) | Youth registration ([FIFA development reports](https://www.fifa.com/social-impact/education-and-community-development)).*")
+    st.markdown("*Sources: [Google Trends — Visit Spain](https://trends.google.com/trends/explore?date=2025-01-01%202026-08-01&q=visit%20spain) | [Birth rate study — PMC/NIH](https://pmc.ncbi.nlm.nih.gov/articles/PMC10906258/) | [Youth soccer registration — Yahoo Sports](https://sports.yahoo.com/articles/youth-soccer-numbers-locally-amid-223213320.html)*")
     
     st.divider()
     
