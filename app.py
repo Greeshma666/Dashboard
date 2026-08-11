@@ -206,12 +206,12 @@ with tab1:
     st.write("During a World Cup, something measurable happens to planet Earth. These patterns have been documented across multiple tournaments:")
     
     c1, c2, c3 = st.columns(3)
-    c1.metric("⚡ Power Grid", "+3 GW", "halftime kettle surge (UK)")
+    c1.metric("⚡ Power Grid", "2.8 GW", "record UK World Cup TV pickup")
     c2.metric("🌐 Internet", "Up to 7%", "projected global traffic")
     c3.metric("📊 Data", "13 PB", "transported (as of quarterfinals)")
     
     st.write("""
-    - **UK electricity demand surges up to 3 GW** during halftime as millions boil kettles simultaneously — a phenomenon known as "TV pickup" documented by the UK's National Energy System Operator
+    - **UK electricity demand recorded a 2.8 GW TV pickup** during the World Cup — millions boiling kettles simultaneously, a phenomenon documented by the UK's National Energy System Operator (NESO)
     - **Up to 7% of global internet traffic** was projected to be consumed during the final (Bank of America Global Research — pre-tournament estimate)
     - **13 petabytes** of data transported across tournament and broadcast networks as of the quarterfinals (FIFA official)
     - **Water systems spike at halftime** — documented across UK water utilities during World Cup matches
@@ -219,7 +219,7 @@ with tab1:
     - **City noise levels drop measurably** during play, then spike at goals — documented by urban sound monitoring
     - **Food delivery demand surges** before kickoff as fans order in rather than cook
     """)
-    st.markdown("*Sources: [UK NESO — TV Pickup phenomenon](https://www.neso.energy) | [FIFA — 2026 tournament by numbers](https://www.fifa.com/en/articles/fifa-world-cup-2026-by-numbers) | [Sports Business Journal / Bank of America Global Research](https://www.sportsbusinessjournal.com) (7% internet projection) | UK Water utilities historical reports. These are documented patterns across multiple World Cups.*")
+    st.markdown("*Sources: [UK NESO — record TV pickup](https://www.neso.energy/news/neso-ready-record-electricity-demand-during-biggest-ever-fifa-world-cup) (2.8 GW) | [Sports Business Journal / Bank of America](https://www.sportsbusinessjournal.com/Articles/2026/06/08/numbers-to-know-around-the-world-cup/) (7% internet projection) | [FIFA — digital reach](https://football-technology.fifa.com/organisation/media-releases/packed-stadiums-record-digital-reach-world-cup-2026-numbers-unprecedented-scale) (13 PB data) | UK Water utilities historical reports.*")
     
     st.markdown('<div style="padding:15px 20px;border-radius:8px;background:rgba(220,53,69,0.08);border:1px solid rgba(220,53,69,0.3);"><p style="margin:0;font-size:0.9rem;color:#dc3545;">⚠️ <strong>The dark side:</strong> Domestic violence reports spike 26% in losing countries after elimination (UK study, replicated globally). The same connection that creates joy creates pain.</p></div>', unsafe_allow_html=True)
     
@@ -550,7 +550,7 @@ with tab2:
 - *[FIFA — Fan Festival record-breaking attendance](https://www.fifa.com/en/articles/fifa-world-cup-2026-fan-festival-attendance) (9.017M+)*
 - *[FIFA — World Cup 2026 by the numbers](https://www.fifa.com/en/articles/fifa-world-cup-2026-by-numbers) (6.8M stadium, 263,972 final)*
 - *[FIFA — FIFA/WTO socioeconomic impact study](https://www.fifa.com/en/articles/fifa-world-cup-2026-socioeconomic-impact) (~824K FTE jobs — estimated)*
-- *[FIFA — Digital reach and technology](https://www.fifa.com/en/articles/fifa-world-cup-2026-digital-technology) (13 PB data — as of quarterfinals, not full tournament)*
+- *[FIFA — Digital reach and technology](https://football-technology.fifa.com/organisation/media-releases/packed-stadiums-record-digital-reach-world-cup-2026-numbers-unprecedented-scale) (13 PB data — as of quarterfinals, not full tournament)*
 - *[FIFA — World Cup 2026 tournament overview](https://inside.fifa.com/organisation/president/news/world-cup-2026-infantino-fiipriority-investment-summit-ronaldo) (104 matches, 39 days)*
 - *[FIFA — Fan Festival extends World Cup experience](https://football-technology.fifa.com/organisation/media-releases/fan-festival-extends-historic-world-cup-2026-experience-millions-record-breaking-celebrations-host-countries) (178 countries)*
 """)

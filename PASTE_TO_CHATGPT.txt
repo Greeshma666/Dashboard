@@ -1,0 +1,181 @@
+PROMPT FOR CHATGPT:
+==================
+
+I have two Streamlit dashboards:
+
+1. Your version (the cinematic scrollable one with pre-rendered chapter images and sticky nav)
+2. My interactive version (code below) which has real Plotly charts, team comparison radar, Google Trends explorer, and live data
+
+I want to MERGE them: Keep your cinematic visual design and scrollable chapter layout, but REPLACE the static PNG images with real interactive Streamlit/Plotly content from my version.
+
+Specifically, add these interactive elements into your chapter layout:
+
+- Chapter 1: Keep as cinematic hero (can stay as image or rebuild with HTML)
+- Chapter 2: Add the Google Trends area chart showing the World Cup search spike (with highlighted tournament period) AND the 8/10 country ranking with gold bars
+- Chapter 3: Add the Fan Festival sites map (Plotly Scattergeo showing 8 cities) and the 9.0M vs 6.8M comparison
+- Chapter 4: Add the team comparison radar chart (user selects two teams) AND/OR the player scatter plot (Creativity vs Attacking scores with Messi/Ronaldo/Yamal annotated)
+- Chapter 5: Keep mostly narrative but add the Cabo Verde match results data
+
+Keep your dark theme (#02080d background), sticky chapter nav, gold color palette (#d89a2b), and cinematic spacing (each chapter ~85-95vh).
+Make all Plotly charts use dark transparent backgrounds (plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)') and gold/white color schemes to blend with the design.
+
+Important: The data files are in a `data/` folder relative to app.py. The assets/images are in an `assets/` folder.
+
+Here is my interactive dashboard code that has all the working charts and data loading:
+
+==================
+CODE:
+==================
+
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+import os
+
+st.set_page_config(page_title="The Night the World Held Its Breath", page_icon="⚽", layout="wide", initial_sidebar_state="collapsed")
+
+NAVY = "#1B2A4A"
+GOLD = "#D4AF37"
+
+# Data
+@st.cache_data
+def load_data():
+    d = os.path.join(os.path.dirname(__file__), 'data')
+    return {
+        'team_results': pd.read_csv(f'{d}/fifa_2026_team_results.csv'),
+        'attacking': pd.read_csv(f'{d}/fifa_2026_official_team_stats.csv'),
+        'distribution': pd.read_csv(f'{d}/fifa_2026_official_distribution_stats.csv'),
+        'goalkeeping': pd.read_csv(f'{d}/fifa_2026_official_goalkeeping_stats.csv'),
+        'physical': pd.read_csv(f'{d}/fifa_2026_official_physical_stats.csv'),
+        'defending': pd.read_csv(f'{d}/fifa_2026_official_defending_stats.csv'),
+        'performers': pd.read_csv(f'{d}/fifa_2026_top_performers.csv'),
+        'gtrends_wc': pd.read_csv(f'{d}/gtrends_world_cup.csv', index_col=0, parse_dates=True),
+        'gtrends_spain': pd.read_csv(f'{d}/gtrends_visit_spain.csv', index_col=0, parse_dates=True),
+        'gtrends_travel': pd.read_csv(f'{d}/gtrends_travel_to_usa.csv', index_col=0, parse_dates=True),
+        'gtrends_visa': pd.read_csv(f'{d}/gtrends_us_visa.csv', index_col=0, parse_dates=True),
+        'gtrends_soccer': pd.read_csv(f'{d}/gtrends_soccer_vs_football.csv', index_col=0, parse_dates=True),
+        'gtrends_watch': pd.read_csv(f'{d}/gtrends_watch_party.csv', index_col=0, parse_dates=True),
+        'gtrends_hotels_ny': pd.read_csv(f'{d}/gtrends_hotels_newyork.csv', index_col=0, parse_dates=True),
+        'gtrends_hotels_seattle': pd.read_csv(f'{d}/gtrends_hotels_seattle.csv', index_col=0, parse_dates=True),
+        'gtrends_hotels_miami': pd.read_csv(f'{d}/gtrends_hotels_miami.csv', index_col=0, parse_dates=True),
+        'gtrends_hotels_kansas': pd.read_csv(f'{d}/gtrends_hotels_kansas.csv', index_col=0, parse_dates=True),
+        'worldcups': pd.read_csv(f'{d}/WorldCups.csv'),
+    }
+
+data = load_data()
+
+# ========================================
+# INTERACTIVE ELEMENT 1: Google Trends Chart
+# ========================================
+wc = data['gtrends_wc'].copy()
+wc.columns = ['Interest']
+fig_trends = px.area(wc.reset_index(), x='date', y='Interest', color_discrete_sequence=[GOLD])
+fig_trends.add_vrect(x0="2026-06-11", x1="2026-07-19", fillcolor="rgba(212,175,55,0.1)", line_width=0,
+              annotation_text="World Cup 2026", annotation_position="top")
+fig_trends.update_layout(height=350, xaxis_title="", yaxis_title="Search Interest (0-100)",
+                         plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)',
+                         font=dict(color='#d9d2c7'))
+
+# ========================================
+# INTERACTIVE ELEMENT 2: Team Comparison Radar
+# ========================================
+def get_stats(team):
+    atk = data['attacking'][data['attacking']['Team']==team]
+    dist = data['distribution'][data['distribution']['Team']==team]
+    gk = data['goalkeeping'][data['goalkeeping']['Team']==team]
+    phys = data['physical'][data['physical']['Team']==team]
+    dfn = data['defending'][data['defending']['Team']==team]
+    return {
+        'Goals': atk['Goals'].values[0] if len(atk) else 0,
+        'Pass Accuracy': dist['Pass_Accuracy_Pct'].values[0] if len(dist) else 0,
+        'Clean Sheets': gk['Clean_Sheets'].values[0] if len(gk) else 0,
+        'Avg Distance (km)': phys['Avg_Distance_Per_Player_km'].values[0] if len(phys) else 0,
+        'Tackles': dfn['Tackles'].values[0]/10 if len(dfn) else 0,
+    }
+
+# Usage: select two teams, build radar
+# team1 = st.selectbox("Team 1", all_teams, index=...)
+# team2 = st.selectbox("Team 2", all_teams, index=...)
+# s1, s2 = get_stats(team1), get_stats(team2)
+# fig_radar = go.Figure()
+# fig_radar.add_trace(go.Scatterpolar(...))
+
+# ========================================
+# INTERACTIVE ELEMENT 3: Player Scatter Plot
+# ========================================
+performers = data['performers'].copy()
+fig_players = px.scatter(performers, x='Creativity_Score', y='Attacking_Score',
+                 size=[max(d,4) for d in performers['Defending_Score']],
+                 color='Attacking_Score', color_continuous_scale=[NAVY, GOLD, '#E63946'],
+                 hover_name='Player', hover_data={'Team':True, 'Rank':True}, size_max=22)
+
+for player, label in [('Lionel MESSI','Messi (39)'),('CRISTIANO RONALDO','CR7 (41)'),
+                      ('Lamine YAMAL','Yamal (18)'),('Kylian MBAPPE','Mbappé #1')]:
+    p = performers[performers['Player']==player]
+    if len(p):
+        fig_players.add_annotation(x=p['Creativity_Score'].values[0], y=p['Attacking_Score'].values[0],
+                         text=label, showarrow=True, arrowhead=2, font=dict(size=11, color=GOLD))
+
+fig_players.update_layout(height=500, xaxis_title="Creativity Score", yaxis_title="Attacking Score",
+                          coloraxis_showscale=False, showlegend=False,
+                          plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)',
+                          font=dict(color='#d9d2c7'))
+
+# ========================================
+# INTERACTIVE ELEMENT 4: Search Trends Explorer
+# ========================================
+# trend_choice = st.selectbox("Choose a trend:", [...])
+# trend_map = {"World Cup (Global)":'gtrends_wc', "Travel to USA":'gtrends_travel', ...}
+# td = data[trend_map[trend_choice]].copy()
+# fig_explorer = px.area(td.reset_index(), ...)
+
+# ========================================
+# INTERACTIVE ELEMENT 5: Fan Festival Sites Map
+# ========================================
+sites = {'Mexico City':(19.43,-99.13),'Guadalajara':(20.67,-103.35),'Toronto':(43.65,-79.38),
+         'Houston':(29.76,-95.37),'Miami':(25.76,-80.19),'Philadelphia':(39.95,-75.17),
+         'Los Angeles':(34.05,-118.24),'Dallas':(32.78,-96.80)}
+fig_map = go.Figure()
+fig_map.add_trace(go.Scattergeo(lon=[c[1] for c in sites.values()], lat=[c[0] for c in sites.values()],
+                                mode='markers+text', marker=dict(size=10, color=GOLD, opacity=0.9),
+                                text=list(sites.keys()), textposition='top center',
+                                textfont=dict(size=7, color='rgba(255,255,255,0.6)'),
+                                showlegend=False, hoverinfo='text', hovertext=list(sites.keys())))
+fig_map.update_geos(showframe=False, showcoastlines=True, coastlinecolor='rgba(255,255,255,0.08)',
+                    showland=True, landcolor='#02080d', showocean=True, oceancolor='#02080d',
+                    showcountries=False, projection_type='natural earth', bgcolor='rgba(0,0,0,0)',
+                    lataxis=dict(range=[15,50]), lonaxis=dict(range=[-125,-65]))
+fig_map.update_layout(height=250, margin=dict(l=0,r=0,t=0,b=0),
+                      plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
+
+# ========================================
+# DATA FILES AVAILABLE:
+# ========================================
+# data/gtrends_world_cup.csv - weekly search interest
+# data/gtrends_wc_by_country.csv - search interest by country (for 8/10 insight)
+# data/fifa_2026_team_results.csv - Team, Final_Position, Top_Goalscorer
+# data/fifa_2026_official_team_stats.csv - attacking stats per team
+# data/fifa_2026_official_distribution_stats.csv - passing stats
+# data/fifa_2026_official_goalkeeping_stats.csv
+# data/fifa_2026_official_physical_stats.csv
+# data/fifa_2026_official_defending_stats.csv
+# data/fifa_2026_top_performers.csv - Player, Team, Attacking_Score, Creativity_Score
+# data/results.csv - all international football results including 2026 WC matches
+# data/WorldCups.csv - historical WC winners
+# Plus: gtrends_visit_spain.csv, gtrends_travel_to_usa.csv, gtrends_us_visa.csv, etc.
+
+# ========================================
+# KEY VERIFIED FACTS TO INCLUDE:
+# ========================================
+# 8/10 top search geographies weren't competing (from gtrends_wc_by_country.csv)
+# 9,017,000 Fan Festival visits (FIFA official)
+# 6,800,000 stadium attendance (FIFA official)
+# 263,972 watched final at Fan Festivals (FIFA official)
+# 178 countries at Kansas City Fan Festival (KC2026)
+# 891 first-timers / 357 returning / 71% first WC (FIFA official)
+# Cabo Verde population 527,000 (World Bank)
+# Cabo Verde results: Spain 0-0, Uruguay 2-2, Argentina 2-3 → Round of 32
+# Vozinha (40) - 7 saves vs Spain, mother visa story (Reuters)
+# Messi-Yamal #19 connection: 2007 photo → 2026 final on July 19
+# Craig Gordon 43 (oldest) / Gilberto Mora 17 (youngest)
