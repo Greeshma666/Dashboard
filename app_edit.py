@@ -545,12 +545,19 @@ with tab2:
     c2.metric("🏟️ Stadiums", "6.8M+", "Cumulative attendance")
     c3.metric("📺 Final at Fan Fests", "263,972", "8 sites, one night")
     c4.metric("🌍 Kansas City", "178", "Countries represented")
+    c1.markdown("[Source](https://football-technology.fifa.com/organisation/media-releases/fan-festival-extends-historic-world-cup-2026-experience-millions-record-breaking-celebrations-host-countries)", unsafe_allow_html=True)
+    c2.markdown("[Source](https://quality.fifa.com/organisation/media-releases/world-cup-2026-numbers-unprecedented-operation-behind-biggest-sporting-event-history)", unsafe_allow_html=True)
+    c3.markdown("[Source](https://football-technology.fifa.com/organisation/media-releases/fan-festival-extends-historic-world-cup-2026-experience-millions-record-breaking-celebrations-host-countries)", unsafe_allow_html=True)
+    c4.markdown("[Source](https://football-technology.fifa.com/organisation/media-releases/fan-festival-extends-historic-world-cup-2026-experience-millions-record-breaking-celebrations-host-countries)", unsafe_allow_html=True)
     
     c5, c6, c7 = st.columns(3)
     c5.metric("👷 Jobs (Est.)", "~824K FTE", "FIFA/WTO study")
     c6.metric("📡 Data Transported", "13 PB", "As of quarterfinals")
     c7.metric("🏟️ Matches", "104")
     c7.markdown('<p style="color:#09ab3b; font-size:0.85rem; margin-top:-15px;">39 days</p>', unsafe_allow_html=True)
+    c5.markdown("[Source](https://inside.fifa.com/organisation/media-releases/fifa-wto-study-estimates-usd-47-billion-economic-output-from-fifa-club-world)", unsafe_allow_html=True)
+    c6.markdown("[Source](https://football-technology.fifa.com/organisation/media-releases/packed-stadiums-record-digital-reach-world-cup-2026-numbers-unprecedented-scale)", unsafe_allow_html=True)
+    c7.markdown("[Source](https://inside.fifa.com/organisation/president/news/world-cup-2026-infantino-fiipriority-investment-summit-ronaldo)", unsafe_allow_html=True)
     
     st.info("**More people experienced the World Cup outside the stadiums (9.017M+) than inside them (6.8M).** The biggest crowd wasn't in a stadium — it was everywhere else.")
     
