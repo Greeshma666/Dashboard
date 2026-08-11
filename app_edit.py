@@ -561,14 +561,6 @@ with tab2:
     
     st.info("**More people experienced the World Cup outside the stadiums (9.017M+) than inside them (6.8M).** The biggest crowd wasn't in a stadium — it was everywhere else.")
     
-    st.markdown("""*Sources:*
-- *[FIFA — Fan Festival record-breaking attendance](https://football-technology.fifa.com/organisation/media-releases/fan-festival-extends-historic-world-cup-2026-experience-millions-record-breaking-celebrations-host-countries) (9.017M Fan Festival visits, 263,972 Final viewers, 178 countries represented in Kansas City)*
-- *[FIFA — World Cup 2026 by the numbers](https://quality.fifa.com/organisation/media-releases/world-cup-2026-numbers-unprecedented-operation-behind-biggest-sporting-event-history) (6.8M+ stadium attendance, 104 matches, 39 days)*
-- *[FIFA/WTO — Socioeconomic impact study](https://inside.fifa.com/organisation/media-releases/fifa-wto-study-estimates-usd-47-billion-economic-output-from-fifa-club-world) (~824K FTE jobs globally — estimated)*
-- *[FIFA — Digital reach and technology](https://football-technology.fifa.com/organisation/media-releases/packed-stadiums-record-digital-reach-world-cup-2026-numbers-unprecedented-scale) (13 PB transported — as of last eight)*
-- *[FIFA — World Cup 2026 tournament overview](https://inside.fifa.com/organisation/president/news/world-cup-2026-infantino-fiipriority-investment-summit-ronaldo) (104 matches, 39 days)*
-- *[FIFA — Fan Festival extends World Cup experience](https://football-technology.fifa.com/organisation/media-releases/fan-festival-extends-historic-world-cup-2026-experience-millions-record-breaking-celebrations-host-countries) (178 countries)*
-""")
     
     st.divider()
 # ====================
