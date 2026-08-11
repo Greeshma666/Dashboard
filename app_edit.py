@@ -429,6 +429,7 @@ with tab3:
     # All teams table
     st.subheader("📋 All 48 Teams — Final Results")
     st.dataframe(data['team_results'].sort_values('Final_Position'), use_container_width=True, hide_index=True)
+    st.markdown("*Source: [FIFA — Team Statistics](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics/team-statistics)*")
 
 # ====================
 # TAB 3: GLOBAL IMPACT
