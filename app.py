@@ -234,12 +234,12 @@ with tab1:
     
     c1, c2, c3 = st.columns(3)
     c1.metric("👶 Birth Rates", "+spike", "9 months after wins")
-    c2.metric("✈️ Tourism Interest", "44 to 51", "Visit Spain search index")
+    c2.metric("✈️ Tourism Interest", "+16%", "Visit Spain search interest")
     c3.metric("⚽ Youth Soccer", "+35%", "registration in winning country")
     
     st.write("""
     - **Birth rates** can spike 9 months after a national team wins — researchers identified 1,000+ additional births in South Africa around nine months after the 2010 World Cup
-    - Global search interest for **"Visit Spain"** rose from 44 to 51 following the Final
+    - **"Visit Spain"** search interest rose 16% following the Final, with the Google Trends index increasing from 44 to 51
     - **Youth soccer registration** jumps 35% in the winning country — and in surprise performers
     - **Major League Soccer (MLS)** conversations exploded — America's relationship with soccer changed permanently
     """)
