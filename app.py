@@ -327,7 +327,7 @@ with tab1:
                       coloraxis_showscale=False, showlegend=False)
     st.plotly_chart(fig, use_container_width=True)
     
-    st.info("💡 **Did you know?** Yamal's creativity score (7.47) was higher than Messi at the same age. Ferran Torres jumped **94 positions** in FIFA rankings after scoring the winning goal.")
+    st.info("💡 **Did you know?** Yamal's creativity score (7.47) was higher than Messi at the same age.")
     
     st.divider()
     
