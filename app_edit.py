@@ -68,7 +68,6 @@ st.markdown(f"""
 <div style="background:{NAVY}; padding:60px 30px; border-radius:15px; text-align:center; margin-bottom:30px;">
     <p style="font-family:'Bebas Neue',sans-serif; font-size:5.5rem; color:white; margin:0; line-height:1.05; letter-spacing:4px;">WHEN THE WORLD<br>HELD ITS BREATH</p>
     <p style="font-family:'Inter',sans-serif; font-size:1.1rem; color:{GOLD}; margin-top:15px;">How FIFA World Cup proved that billions of strangers share one heartbeat <svg width="40" height="20" viewBox="0 0 40 20" style="vertical-align:middle;"><polyline points="0,10 8,10 11,2 14,18 17,6 20,14 23,10 40,10" fill="none" stroke="#dc3545" stroke-width="2"/></svg></p>
-    <p style="font-family:'Inter',sans-serif; font-size:0.8rem; color:rgba(255,255,255,0.5); margin-top:20px;">Spain 1–0 Argentina · MetLife Stadium, NJ · July 19, 2026 · 106th minute</p>
 </div>
 """, unsafe_allow_html=True)
 
