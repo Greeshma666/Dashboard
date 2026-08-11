@@ -391,16 +391,12 @@ with tab3:
         t1, t2 = st.columns(2)
         with t1:
             st.markdown(f"**{team1}**")
-            res1 = data['team_results'][data['team_results']['Team']==team1]
-            if len(res1):
-                st.caption(f"{res1['Final_Position'].values[0]} · {res1['Top_Goalscorer'].values[0]}")
+
             for k, v in s1.items():
                 st.metric(k, f"{v:.1f}")
         with t2:
             st.markdown(f"**{team2}**")
-            res2 = data['team_results'][data['team_results']['Team']==team2]
-            if len(res2):
-                st.caption(f"{res2['Final_Position'].values[0]} · {res2['Top_Goalscorer'].values[0]}")
+
             for k, v in s2.items():
                 st.metric(k, f"{v:.1f}")
     with col_radar:
