@@ -239,7 +239,7 @@ with tab1:
     
     st.write("""
     - **Birth rates** can spike 9 months after a national team wins — researchers identified 1,000+ additional births in South Africa around nine months after the 2010 World Cup
-    - **"Visit Spain"** search interest rose 16% following the Final, with the Google Trends index increasing from 44 to 51
+    - **"Visit Spain"** search interest rose 16% following the Final
     - **Youth soccer registration** jumps 35% in the winning country — and in surprise performers
     - **Major League Soccer (MLS)** conversations exploded — America's relationship with soccer changed permanently
     """)
